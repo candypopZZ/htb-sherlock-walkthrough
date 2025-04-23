@@ -4,6 +4,8 @@
 **Difficulty:** Very Easy  
 **Status:** Completed!
 
+![origins](https://github.com/candypopZZ/htb-sherlock-walkthrough/blob/main/images/origins.JPG?raw=true)
+
 Hey! I’m still new to Sherlock challenges, but here’s my walkthrough for **"Origins"** from HackTheBox. This one teaches a lot about brute-force attacks, FTP traffic, and how attackers exfiltrate data. Hope it helps someone out there!
 
 ---
@@ -40,7 +42,8 @@ Since the scenario mentioned FTP, I filtered only FTP traffic:
 
 Found multiple login attempts from a single IP. Clearly a brute-force attempt.
 
-📸 *[Insert screenshot]*  
+![task1](https://github.com/candypopZZ/htb-sherlock-walkthrough/blob/main/images/task1.JPG?raw=true)
+
 **Answer:** `15.206.185.207`
 
 ---
@@ -49,7 +52,8 @@ Found multiple login attempts from a single IP. Clearly a brute-force attempt.
 
 I took the attacker's IP and looked it up on [ipinfo.io](https://ipinfo.io).
 
-📸 *[Insert screenshot]*  
+![task2](https://github.com/candypopZZ/htb-sherlock-walkthrough/blob/main/images/task2.JPG?raw=true)
+
 **Answer:** `Mumbai`
 
 ---
@@ -58,7 +62,8 @@ I took the attacker's IP and looked it up on [ipinfo.io](https://ipinfo.io).
 
 Checked the response banners in FTP traffic. You can see this info in one of the early server replies.
 
-📸 *[Insert screenshot]*  
+![task3]( https://github.com/candypopZZ/htb-sherlock-walkthrough/blob/main/images/task3.JPG?raw=true)
+
 **Answer:** `vsFTPd 3.0.5`
 
 ---
@@ -74,7 +79,8 @@ Filtered traffic to only show connections from the attacker’s IP:
 To view the exact time, I switched to UTC format in Wireshark:  
 `View > Time Display Format > UTC Date and Time`
 
-📸 *[Insert screenshot]*  
+![task4](https://github.com/candypopZZ/htb-sherlock-walkthrough/blob/main/images/task4.JPG?raw=true)
+
 **Answer:** `2024-05-03 04:12:54`
 
 ---
@@ -87,7 +93,8 @@ Searched for “Login successful” and followed the TCP stream to find the succ
 > Analyze --> Follow --> TCP Stream
 </pre>
 
-📸 *[Insert screenshot]*  
+![task5](https://github.com/candypopZZ/htb-sherlock-walkthrough/blob/main/images/task5.JPG?raw=true)
+
 **Answer:** `forela-ftp:ftprocks69$`
 
 ---
@@ -102,7 +109,10 @@ Filtered for FTP file transfer activity:
 
 Found the file downloads and saw the command used: `RETR`
 
-📸 *[Insert screenshot]*  
+![task6.0](https://github.com/candypopZZ/htb-sherlock-walkthrough/blob/main/images/task6.0.JPG?raw=true)
+
+![task6](https://github.com/candypopZZ/htb-sherlock-walkthrough/blob/main/images/task6.JPG?raw=true)
+
 **Answer:** `RETR`
 
 ---
@@ -117,20 +127,13 @@ Exported the FTP-transferred files:
 
 Opened `Maintenance-Notice.pdf` and found the temporary password.
 
-📸 *[Insert screenshot]*  
+![task7](https://github.com/candypopZZ/htb-sherlock-walkthrough/blob/main/images/task7.JPG?raw=true)
+
 **Answer:** `**B@ckup2024!**`
 
 ---
 
 ## ☁️ Task 8: What is the s3 bucket URL for the 2023 archive?
-
-This one was straightforward. Found the URL mentioned directly.
-
-📸 *[Insert screenshot]*  
-**Answer:** `https://2023-coldstorage.s3.amazonaws.com`
-
----
-
 ## 📧 Task 9: What internal email was used by the attacker?
 
 Opened the `s3_buckets.txt` file:
@@ -139,9 +142,12 @@ Opened the `s3_buckets.txt` file:
 > cat s3_buckets.txt
 </pre>
 
-Saw the phishing email address used internally.
+This one was straightforward. Found the URL mentioned directly. Saw the phishing email address used internally.
 
-📸 *[Insert screenshot]*  
+![task8,9](https://github.com/candypopZZ/htb-sherlock-walkthrough/blob/main/images/task%208,9.JPG?raw=true)
+
+**Answer:** `https://2023-coldstorage.s3.amazonaws.com`
+
 **Answer:** `archivebackups@forela.co.uk`
 
 ---
