@@ -28,7 +28,7 @@ The security team suspects a rogue device running the Responder tool to perform 
 Use this filter: 
 <pre> > udp.port == 5355 </pre>
 
-![task1nox](https://github.com/candypopZZ/htb-sherlock-walkthrough/blob/main/images/task1.JPG?raw=true)
+![task1nox](https://github.com/candypopZZ/htb-sherlock-walkthrough/blob/main/images/task1nox.JPG?raw=true)
 
 172.17.79.136 initiated queries for “DCC01,” which was actually a typo, and 172.17.79.135 responded to it.
 
@@ -42,7 +42,7 @@ Now, let's identify the hostname of the rogue machine.
 
 <pre> > ip.addr == 172.17.79.135 && dhcp </pre>
 
-![task2nox](https://github.com/candypopZZ/htb-sherlock-walkthrough/blob/main/images/task2.JPG?raw=true)
+![task2nox](https://github.com/candypopZZ/htb-sherlock-walkthrough/blob/main/images/task2nox.JPG?raw=true)
 
 We can see the hostname in the DHCP packet.
 
@@ -56,7 +56,7 @@ Let's confirm if the attacker captured the user's hash. We need to find the user
 
 <pre> > ntlmssp </pre>
 
-![task3,4nox](https://github.com/candypopZZ/htb-sherlock-walkthrough/blob/main/images/task3,44.JPG?raw=true)
+![task3,44nox](https://github.com/candypopZZ/htb-sherlock-walkthrough/blob/main/images/task3,44nox.JPG?raw=true)
 
 The username is in the NTLMSSP_AUTH packet.
 
