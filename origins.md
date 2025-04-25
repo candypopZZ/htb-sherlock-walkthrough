@@ -47,7 +47,7 @@ Since the scenario mentioned FTP, I filtered only FTP traffic:
 
 Found multiple login attempts from a single IP. Clearly a brute-force attempt.
 
-![task1](https://github.com/candypopZZ/htb-sherlock-walkthrough/blob/main/images/task1.JPG?raw=true)
+![task1ori](https://github.com/candypopZZ/htb-sherlock-walkthrough/blob/main/images/task1ori.JPG?raw=true)
 
 **Answer:** `15.206.185.207`
 
@@ -57,7 +57,7 @@ Found multiple login attempts from a single IP. Clearly a brute-force attempt.
 
 I took the attacker's IP and looked it up on [ipinfo.io](https://ipinfo.io).
 
-![task2](https://github.com/candypopZZ/htb-sherlock-walkthrough/blob/main/images/task2.JPG?raw=true)
+![task2ori](https://github.com/candypopZZ/htb-sherlock-walkthrough/blob/main/images/task2ori.JPG?raw=true)
 
 **Answer:** `Mumbai`
 
@@ -67,7 +67,7 @@ I took the attacker's IP and looked it up on [ipinfo.io](https://ipinfo.io).
 
 Checked the response banners in FTP traffic. You can see this info in one of the early server replies.
 
-![task3]( https://github.com/candypopZZ/htb-sherlock-walkthrough/blob/main/images/task3.JPG?raw=true)
+![task3](https://github.com/candypopZZ/htb-sherlock-walkthrough/blob/main/images/task3ori.JPG?raw=true)
 
 **Answer:** `vsFTPd 3.0.5`
 
@@ -84,7 +84,7 @@ Filtered traffic to only show connections from the attacker’s IP:
 To view the exact time, I switched to UTC format in Wireshark:  
 `View > Time Display Format > UTC Date and Time`
 
-![task4](https://github.com/candypopZZ/htb-sherlock-walkthrough/blob/main/images/task4.JPG?raw=true)
+![task4](https://github.com/candypopZZ/htb-sherlock-walkthrough/blob/main/images/task4ori.JPG?raw=true)
 
 **Answer:** `2024-05-03 04:12:54`
 
@@ -116,7 +116,7 @@ Found the file downloads and saw the command used: `RETR`
 
 ![task6.0](https://github.com/candypopZZ/htb-sherlock-walkthrough/blob/main/images/task6.0.JPG?raw=true)
 
-![task6](https://github.com/candypopZZ/htb-sherlock-walkthrough/blob/main/images/task6.JPG?raw=true)
+![taskori](https://github.com/candypopZZ/htb-sherlock-walkthrough/blob/main/images/taskori.JPG?raw=true)
 
 **Answer:** `RETR`
 
@@ -132,7 +132,7 @@ Exported the FTP-transferred files:
 
 Opened `Maintenance-Notice.pdf` and found the temporary password.
 
-![task7](https://github.com/candypopZZ/htb-sherlock-walkthrough/blob/main/images/task7.JPG?raw=true)
+![task7ori](https://github.com/candypopZZ/htb-sherlock-walkthrough/blob/main/images/task7ori.JPG?raw=true)
 
 **Answer:** `**B@ckup2024!**`
 
