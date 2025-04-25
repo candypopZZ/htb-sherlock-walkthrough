@@ -9,6 +9,11 @@
 Hey! I’m still new to Sherlock challenges, but here’s my walkthrough for **"Origins"** from HackTheBox. This one teaches a lot about brute-force attacks, FTP traffic, and how attackers exfiltrate data. Hope it helps someone out there!
 
 ---
+## Scenario
+
+A major incident has recently occurred at Forela. Approximately 20 GB of data were stolen from internal s3 buckets and the attackers are now extorting Forela. During the root cause analysis, an FTP server was suspected to be the source of the attack. It was found that this server was also compromised and some data was stolen, leading to further compromises throughout the environment. You are provided with a minimal PCAP file. Your goal is to find evidence of brute force and data exfiltration.
+
+---
 
 ## 📁 What’s Given?
 
