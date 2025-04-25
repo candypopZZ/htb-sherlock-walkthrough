@@ -149,7 +149,7 @@ Opened the `s3_buckets.txt` file:
 
 This one was straightforward. Found the URL mentioned directly. Saw the phishing email address used internally.
 
-![task8,9](https://github.com/candypopZZ/htb-sherlock-walkthrough/blob/main/images/task%208,9.JPG?raw=true)
+![tasklast](https://github.com/candypopZZ/htb-sherlock-walkthrough/blob/main/images/tasklast.JPG?raw=true)
 
 **Answer:** `https://2023-coldstorage.s3.amazonaws.com`
 
