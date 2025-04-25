@@ -1,6 +1,6 @@
 # 🕵️ HTB Sherlock: Origins Walkthrough
 
-**Category:** Forensics  
+**Category:** DFIR   
 **Difficulty:** Very Easy  
 **Status:** Completed!
 
