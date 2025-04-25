@@ -1,9 +1,10 @@
 # 🕵️ HTB Sherlock: Noxious Walkthrough
 
-**Category:** SOC 
+**Category:** SOC  
 **Difficulty:** Very Easy  
 **Status:** Completed!
 
+![noxious](https://github.com/candypopZZ/htb-sherlock-walkthrough/blob/main/images/noxious.JPG?raw=true)
 ---
 
 ## 📁 What’s Given?
@@ -21,6 +22,8 @@ The security team suspects a rogue device running the Responder tool to perform 
 Use this filter: 
 <pre> > udp.port == 5355 </pre>
 
+![task1](https://github.com/candypopZZ/htb-sherlock-walkthrough/blob/main/images/task1.JPG?raw=true)
+
 172.17.79.136 initiated queries for “DCC01,” which was actually a typo, and 172.17.79.135 responded to it.
 
 **Answer**: 172.17.79.135
@@ -33,6 +36,8 @@ Now, let's identify the hostname of the rogue machine.
 
 <pre> > ip.addr == 172.17.79.135 && dhcp </pre>
 
+![task2](https://github.com/candypopZZ/htb-sherlock-walkthrough/blob/main/images/task2.JPG?raw=true)
+
 We can see the hostname in the DHCP packet.
 
 **Answer**: kali
@@ -44,6 +49,8 @@ We can see the hostname in the DHCP packet.
 Let's confirm if the attacker captured the user's hash. We need to find the username.
 
 <pre> > ntlmssp </pre>
+
+![task3,4](https://github.com/candypopZZ/htb-sherlock-walkthrough/blob/main/images/task3,44.JPG?raw=true)
 
 The username is in the NTLMSSP_AUTH packet.
 
@@ -82,6 +89,8 @@ Now let’s look for the NTLM server challenge value.
 
 Expand to find the NTLM Server Challenge.
 
+![task6](https://github.com/candypopZZ/htb-sherlock-walkthrough/blob/main/images/task6.JPG?raw=true)
+
 **Answer**: 601019d191f054f1
 
 ---
@@ -91,6 +100,8 @@ Expand to find the NTLM Server Challenge.
 Next, we need to find the NTProofStr value.
 
 In the NTLM response packet, we can find the NTProofStr.
+
+![task7](https://github.com/candypopZZ/htb-sherlock-walkthrough/blob/main/images/task7.JPG?raw=true)
 
 **Answer**: c0cc803a6d9fb5a9082253a04dbd4cd4
 
@@ -106,7 +117,7 @@ Let's use the values we’ve found to crack the victim’s password.
 
 
 - **Run hashcat**:
-
+<pre> > hashcat -a0 -m5600 hashfile.txt /usr/share/wordlists/rockyou.txt</pre>
 
 **Answer**: NotMyPassword0k?
 
@@ -116,6 +127,8 @@ Let's use the values we’ve found to crack the victim’s password.
 
 Finally, what file share was the victim trying to access?
 
+![task9](https://github.com/candypopZZ/htb-sherlock-walkthrough/blob/main/images/task9.JPG?raw=true)
+
 - **Default File**: `\\DC01.forela.local\IPC$`
 - **Non-Default File**: `\\DC01\DC-Confidential`
 
@@ -123,7 +136,7 @@ Finally, what file share was the victim trying to access?
 
 ---
 
-### Reflection
+### 💭Reflection
 
 This challenge really gave me some good insight into how attackers can leverage tools like Responder for LLMNR poisoning and the ease with which credentials can be captured. It was interesting to see how a simple typo by the victim could result in such an attack, and how important it is to have a strong network defense in place.
 
